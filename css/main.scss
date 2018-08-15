@@ -1,0 +1,131 @@
+/*---------------------------------------------------------
+-------------------------- Variables ----------------------
+---------------------------------------------------------*/
+$white: #fff;
+$gray: #C2C2C2;
+
+$purple: #6844B7;
+$dark_purple: #4C3185;
+
+$pink: #9E37B0;
+$dark_pink: #6F277D;
+
+
+
+/*---------------------------------------------------------
+-------------------------- Defaults -----------------------
+---------------------------------------------------------*/
+html, body {
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  margin: 0;
+}
+
+::selection {
+  background: $pink;
+  color: $white;
+}
+
+.center {
+  text-align: center;
+}
+
+
+/*---------------------------------------------------------
+-------------------------- Accordion ----------------------
+---------------------------------------------------------*/
+.accordion {
+  margin: 20px;
+
+  &__item {
+    margin-bottom: 3px;
+
+    &__toggler {
+      position: relative;
+      padding: 30px 20px;
+      border-bottom: 5px solid $dark_pink;
+      background: $pink;
+      cursor: pointer;
+      transition: .3s;
+
+      &__title {
+        font-size: 30px;
+        color: $white;
+        font-weight: 800;
+        font-style: italic;
+      }
+
+      &:hover {
+        background: $dark_pink;
+      }
+    }
+
+    &__value {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s;
+
+      &__text {
+        border: 1px solid $gray;
+        border-top: none;
+        padding: 25px 20px;
+        font-size: 19.5px;
+        line-height: 24px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  &__item--active {
+    .accordion__item__toggler {
+      background: $purple;
+      border-color: $dark_purple;
+
+      &:hover {
+        background: $dark_purple;
+      }
+    }
+
+    .arrow {
+      transform: rotate(180deg);
+      margin-top: -6px;
+      margin-right: -12px;
+    }
+
+    .accordion__item__value {
+      display: block;
+    }
+  }
+}
+
+.arrow {
+  &::after, &::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 3px;
+    background: $white;
+    transform: rotate(45deg);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
+  &::after {
+    position: relative;
+    transform: rotate(135deg);
+    left: 12px;
+    top: -3px;
+  }
+}
+
+.arrow--right {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
